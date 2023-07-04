@@ -315,11 +315,17 @@ export class GameEngine {
     if (key.upKey && position.y >= PADDLE_SPEED * 5) {
       position.y = position.y - PADDLE_SPEED * 5;
     }
+    else if (key.upKey && position.y >= PADDLE_SPEED) {
+      position.y = 0;
+    }
     if (
       key.downKey &&
       position.y <= GAME_HEIGHT - PADDLE_HEIGHT - (PADDLE_SPEED * 5)
     ) {
       position.y = position.y + PADDLE_SPEED * 5;
+    }
+    else if (key.downKey && position.y <= GAME_HEIGHT - PADDLE_HEIGHT - PADDLE_SPEED) {
+      position.y = GAME_HEIGHT - PADDLE_HEIGHT;
     }
   }
 

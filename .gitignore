@@ -2,3 +2,5 @@
 /Data/database
 .env
 .env.dev
+.DS_Store
+.DS_Store

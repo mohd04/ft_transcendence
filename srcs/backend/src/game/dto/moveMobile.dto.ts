@@ -1,11 +1,23 @@
-import { IsString, IsNotEmpty, IsUUID, IsNumber } from 'class-validator';
+import { IsString, IsNotEmpty, IsUUID, IsBoolean, IsObject, ValidateNested } from 'class-validator';
+import { Type } from 'class-transformer';
 import { KeyPress } from '../interface/game.interface';
 
+class KeyDto {
+  @IsBoolean()
+  upKey: boolean;
+
+  @IsBoolean()
+  downKey: boolean;
+}
+
 export class MoveMobileDto {
-  @IsUUID()
+  @IsString()
   @IsNotEmpty()
+  @IsUUID()
   roomID: string;
 
-  @IsNumber()
-  key: KeyPress;
+  @IsObject()
+  @ValidateNested()
+  @Type(() => KeyDto)
+  key: KeyDto;
 }
